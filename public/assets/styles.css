@@ -1,0 +1,335 @@
+@media (prefers-color-scheme: light) {
+    :root {
+        --text: #12070d;
+        --background: #f5e5ed;
+        --primary: #eb007d;
+        --secondary: #fedcee;
+        --accent: #13fb7f;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #f8edf3;
+        --background: #1a0a12;
+        --primary: #ff1493;
+        --secondary: #230113;
+        --accent: #04ec70;
+    }
+}
+
+.Header {
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+}
+
+.Header_Logo {
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.12px;
+    text-decoration: none;
+}
+
+.Header_Fruit {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.Header_Finder {
+    color: var(--text);
+    font-weight: 300;
+}
+
+html {
+    height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: "Raleway", sans-serif;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(baggrund.svg);
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+}
+
+.inputFieldsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0 10px;
+    margin-top: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: calc(100% - 20px);
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    height: 30px;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    min-width: 200px;
+}
+
+.inputContainer input {
+    border: none;
+    background: none;
+    color: var(--text);
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+}
+
+.inputContainer input:focus {
+    outline: none;
+}
+
+.inputContainer input::placeholder {
+    color: var(--text);
+    opacity: 0.5;
+}
+
+.inputContainer button {
+    border: none;
+    background: none;
+    color: var(--text);
+    font-size: 16px;
+    width: 100px;
+    height: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.inputContainer button:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.Images {
+    flex: 1 0 0;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 200px);
+    grid-auto-rows: 200px;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 50px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    max-width: 800px;
+    width: 100%;
+}
+
+.Image_Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    height: 200px;
+    aspect-ratio: 1/1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.Image_OnHover {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.Image_Container:hover > .Image_OnHover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.Image_Text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: var(--text);
+    font-weight: 300;
+    font-size: 12px;
+    padding: 10px;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.Image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+body {
+    margin: 0;
+}
+
+.Footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    gap: 10px;
+}
+
+.Footer_Text {
+    color: var(--text);
+    font-weight: 300;
+    opacity: 0.5;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+
+.Footer_Text2 {
+    color: var(--text);
+    opacity: 1;
+    font-weight: 300;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Footer_link {
+    color: var(--text);
+    opacity: 1;
+    font-weight: 300;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+.loading-text {
+    margin-top: 10px;
+    color: white;
+}
+
+.hidden {
+    opacity: 0;
+    display: none;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.loading-text::after {
+    content: "";
+    animation: dotdotdot 2s steps(5, end) infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dotdotdot {
+    0% {
+        content: "";
+    }
+    25% {
+        content: ".";
+    }
+    50% {
+        content: "..";
+    }
+    75% {
+        content: "...";
+    }
+    100% {
+        content: "";
+    }
+}

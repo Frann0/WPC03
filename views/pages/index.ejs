@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading</div>
+    </div>
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+
+        <div class="inputFieldsContainer">
+            <form action="/search" id="searchForm" class="inputContainer" method="post" style="max-width: 300px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                        d="M18.125 17.2413L13.405 12.5213C14.5393 11.1596 15.1049 9.41303 14.9842 7.64495C14.8635 5.87687 14.0658 4.22338 12.757 3.02846C11.4483 1.83354 9.72922 1.18918 7.95748 1.22944C6.18574 1.2697 4.49773 1.99147 3.2446 3.2446C1.99147 4.49773 1.2697 6.18574 1.22944 7.95748C1.18918 9.72922 1.83354 11.4483 3.02846 12.757C4.22338 14.0658 5.87687 14.8635 7.64495 14.9842C9.41303 15.1049 11.1596 14.5393 12.5213 13.405L17.2413 18.125L18.125 17.2413ZM2.50001 8.12501C2.50001 7.01249 2.82991 5.92496 3.44799 4.99993C4.06608 4.0749 4.94458 3.35393 5.97242 2.92819C7.00025 2.50245 8.13125 2.39105 9.22239 2.60809C10.3135 2.82514 11.3158 3.36087 12.1025 4.14754C12.8892 4.93421 13.4249 5.93649 13.6419 7.02763C13.859 8.11877 13.7476 9.24977 13.3218 10.2776C12.8961 11.3054 12.1751 12.1839 11.2501 12.802C10.3251 13.4201 9.23753 13.75 8.12501 13.75C6.63368 13.7484 5.2039 13.1552 4.14936 12.1007C3.09483 11.0461 2.50167 9.61635 2.50001 8.12501Z"
+                        fill="white" fill-opacity="0.25" />
+                </svg>
+                <input type="text" style="flex: 1;" id="search" name="search" pattern="[A-Za-z]+" placeholder="Search"
+                    required value=<%=search %> >
+            </form>
+            <form id="addForm" action="/submit-newFruit" class="inputContainer" method="post" style="max-width: 300px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                        d="M16.25 9.375C16.2494 8.70413 16.069 8.04568 15.7274 7.46825C15.3859 6.89082 14.8958 6.41552 14.3081 6.09187C14.751 5.6299 14.9988 5.01499 15 4.375H13.75C13.7497 4.70642 13.6179 5.02417 13.3835 5.25852C13.1492 5.49287 12.8314 5.62467 12.5 5.625C11.5178 5.6263 10.5752 6.01268 9.87464 6.70119C9.1741 7.38969 8.77145 8.32543 8.75313 9.3075C7.9518 8.49132 7.50198 7.39379 7.5 6.25C7.49836 5.69726 7.31339 5.16067 6.97408 4.72433C6.63478 4.28798 6.1603 3.97652 5.625 3.83875V2.5H4.375V3.83875C3.8397 3.97652 3.36522 4.28798 3.02592 4.72433C2.68661 5.16067 2.50164 5.69726 2.5 6.25V9.375H1.25V10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10V9.375H16.25ZM12.5 6.875C13.1628 6.87583 13.7982 7.13948 14.2669 7.60815C14.7355 8.07681 14.9992 8.71221 15 9.375H10C10.0008 8.71221 10.2645 8.07681 10.7331 7.60815C11.2018 7.13948 11.8372 6.87583 12.5 6.875ZM3.75 6.25C3.75 5.91848 3.8817 5.60054 4.11612 5.36612C4.35054 5.1317 4.66848 5 5 5C5.33152 5 5.64946 5.1317 5.88388 5.36612C6.1183 5.60054 6.25 5.91848 6.25 6.25C6.25249 7.36353 6.58576 8.45121 7.2075 9.375H3.75V6.25ZM10 17.5C8.1197 17.4977 6.30866 16.7901 4.92476 15.5172C3.54085 14.2443 2.68475 12.4986 2.52562 10.625H17.475C17.3159 12.4987 16.4597 14.2445 15.0756 15.5174C13.6916 16.7904 11.8804 17.4978 10 17.5Z"
+                        fill="white" fill-opacity="0.25" />
+                </svg>
+                <input type="text" id="fruitInput" style="flex: 1;" name="fruit" placeholder="Add New Fruit" required>
+                <button id="AddButton">Add</button>
+            </form>
+        </div>
+        <div class="Images">
+            <% fruits.forEach(function(fruit) { %>
+                <div class="Image_Container" data-tilt>
+                    <div class="Image_OnHover">
+                        <p class="Image_Text">
+                            <%= fruit.name %>
+                        </p>
+                    </div>
+                    <img class="Image" src=<%=fruit.image %> alt=<%= fruit.name %> />
+
+                </div>
+                <% }) %>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+    <script>
+        const fruitInput = document.getElementById('fruitInput');
+        const search = document.getElementById('search');
+        const searchForm = document.getElementById('searchForm');
+
+        let timeout = null;
+        search.addEventListener('input', function (event) {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                searchForm.submit();
+            }, 1000);
+        });
+
+
+
+        fruitInput.addEventListener('input', function (event) {
+            if (!fruitInput.checkValidity()) {
+                fruitInput.style.outline = '1px solid #ff1493';
+                fruitInput.style.outline = '';
+            }
+        });
+
+        fruitInput.addEventListener('blur' || 'focusout', function (event) {
+            fruitInput.style.outline = '';
+        });
+    </script>
+
+    <script>
+        const addForm = document.getElementById('addForm');
+        const fi = document.getElementById('fruitInput');
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Show the loading overlay when the API button is clicked
+            const apiButton = document.getElementById('AddButton');
+            apiButton.addEventListener('click', async function () {
+                document.getElementById('loading-overlay').classList.remove('hidden');
+                await fetch('localhost:3000/submit-newFruit', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        fruit: fi.value
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                // Hide the loading overlay when the API call is done
+                document.getElementById('loading-overlay').classList.add('hidden');
+            });
+
+        });
+    </script>
+
+
+    <script type="text/javascript" src="/public/assets/vanilla-tilt.js" defer></script>
+</body>
+
+</html>
